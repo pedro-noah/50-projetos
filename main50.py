@@ -13,7 +13,9 @@ def menu_principal():
         1. Biscoito da Sorte
         2. Rolagem de Dados
         3. Pedra, Papel, Tesoura
+        4. Pedra, Papel, Tesoura, Lagarto e Spock?!
     ''')
+
     opcao_menu_principal = int(input('Digite qual projeto deseja extrair: '))
     print()
     if opcao_menu_principal == 1:
@@ -22,6 +24,8 @@ def menu_principal():
         pjt_rolagem_dado()
     elif opcao_menu_principal == 3:
         pjt_pedra_papel_tesoura()
+    elif opcao_menu_principal == 4:
+        pjt_pptls()
 
 
 
@@ -60,6 +64,9 @@ def pjt_pedra_papel_tesoura():
         print('GANHOU!')
     else:
         print('PERDEU!')
+
+def pjt_pptls():
+    
 
 
 
