@@ -1,4 +1,6 @@
 import random
+import os
+import time
 
 #FUNÇÕES MENU
 def titulo_projeto():
@@ -41,6 +43,7 @@ def pjt_biscoito_sorte():
         if num_biscoito == biscoito['num']:
             print(biscoito['frase'])
             print(biscoito['numero'])
+    clear()
 
 def pjt_rolagem_dado():
     print('Jogando os dados...')
@@ -48,11 +51,12 @@ def pjt_rolagem_dado():
     dado2 = random.randrange(1, 6)
     print(f'Cairam os numeros {dado1} e {dado2}')
     print(f'O valor final foi de:  {dado2+dado1}')
+    clear()
 
 def pjt_pedra_papel_tesoura():
     opcao_ppt = input('Digite a opcao capitalizada (ALL CAPS): ')
-    opcoes = ["PEDRA", "PAPEL", "TESOURA"]
-    opcao_computador_ppt = random.choice(opcoes)
+    opcoesppt = ["PEDRA", "PAPEL", "TESOURA"]
+    opcao_computador_ppt = random.choice(opcoesppt)
     
     print("O computador jogou:", opcao_computador_ppt)
     
@@ -64,18 +68,43 @@ def pjt_pedra_papel_tesoura():
         print('GANHOU!')
     else:
         print('PERDEU!')
+    clear()
 
 def pjt_pptls():
+    opcao_pptls = input('Digite a opcao capitalizada (ALL CAPS): ')
+    opcoes_pptls = ["PEDRA", "PAPEL", "TESOURA", "LAGARTO", "SPOCK"]
+    opcao_computador_pptls = random.choice(opcoes_pptls)
     
-
-
-
-
+    print("O computador jogou:", opcao_computador_pptls)
     
-#INICIALIZADOR
+    if opcao_pptls == opcao_computador_pptls:
+        print('EMPATE!')
+    elif (opcao_pptls == "PEDRA" and (opcao_computador_pptls == "TESOURA" or opcao_computador_pptls == "LAGARTO")) or \
+         (opcao_pptls == "PAPEL" and (opcao_computador_pptls == "PEDRA" or opcao_computador_pptls == "SPOCK")) or \
+         (opcao_pptls == "TESOURA" and (opcao_computador_pptls == "PAPEL" or opcao_computador_pptls == "LAGARTO")) or \
+         (opcao_pptls == "LAGARTO" and (opcao_computador_pptls == "PAPEL" or opcao_computador_pptls == "SPOCK")) or \
+         (opcao_pptls == "SPOCK" and (opcao_computador_pptls == "PEDRA" or opcao_computador_pptls == "TESOURA")):
+        print('GANHOU!')
+    else:
+        print('PERDEU!')
+    clear()
+
+#INICIALIZADORES
+def clear():
+    x = input('''
+        Digite ENTER para continuar...
+        Digite 1 depois ENTER para fechar
+        ''')
+    if x == "1":
+        exit()
+    os.system('cls')
+    main()
+
+
 def main():
     titulo_projeto()
     menu_principal()
 
 if __name__ == "__main__":
     main()
+
