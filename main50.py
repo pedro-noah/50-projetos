@@ -12,7 +12,7 @@ def menu_principal():
     print('''
         1. Biscoito da Sorte
         2. Rolagem de Dados
-        ...
+        3. Pedra, Papel, Tesoura
     ''')
     opcao_menu_principal = int(input('Digite qual projeto deseja extrair: '))
     print()
@@ -46,7 +46,21 @@ def pjt_rolagem_dado():
     print(f'O valor final foi de:  {dado2+dado1}')
 
 def pjt_pedra_papel_tesoura():
-    print('...')
+    opcao_ppt = input('Digite a opcao capitalizada (ALL CAPS): ')
+    opcoes = ["PEDRA", "PAPEL", "TESOURA"]
+    opcao_computador_ppt = random.choice(opcoes)
+    
+    print("O computador jogou:", opcao_computador_ppt)
+    
+    if opcao_ppt == opcao_computador_ppt:
+        print('EMPATE!')
+    elif (opcao_ppt == "PEDRA" and opcao_computador_ppt == "TESOURA") or \
+         (opcao_ppt == "PAPEL" and opcao_computador_ppt == "PEDRA") or \
+         (opcao_ppt == "TESOURA" and opcao_computador_ppt == "PAPEL"):
+        print('GANHOU!')
+    else:
+        print('PERDEU!')
+
 
 
 
