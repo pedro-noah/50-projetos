@@ -4,11 +4,11 @@ import time
 
 #FUNÇÕES MENU
 def titulo_projeto():
-    print('''
+    print('''\033[1;36m
         
 █▀ █▀█   █▀█ █▀█ █▀█ ░░█ █▀▀ ▀█▀ █▀█ █▀
 ▄█ █▄█   █▀▀ █▀▄ █▄█ █▄█ ██▄ ░█░ █▄█ ▄█
-    ''')
+    \033[0m''')
 
 def menu_principal():
     print('''
@@ -94,36 +94,66 @@ def pjt_pptls():
     
 def pjt_milionário():
     perguntas_respostas = [
-    {'pergunta': "Qual é a capital do Brasil?", 'resposta': "Brasília"},
-    {'pergunta': "Quem escreveu 'Dom Quixote'?", 'resposta': "Miguel de Cervantes"},
-    {'pergunta': "Qual é o maior planeta do sistema solar?", 'resposta': "Júpiter"},
-    {'pergunta': "Quem pintou a 'Mona Lisa'?", 'resposta': "Leonardo da Vinci"},
-    {'pergunta': "Quantos continentes existem?", 'resposta': "Sete"}
-    ]
+        {'pergunta': "Qual é a capital do Brasil?", 'resposta': "Brasília"},
+        {'pergunta': "Quem escreveu 'Dom Quixote'?", 'resposta': "Miguel de Cervantes"},
+        {'pergunta': "Qual é o maior planeta do sistema solar?", 'resposta': "Júpiter"},
+        {'pergunta': "Quem pintou a 'Mona Lisa'?", 'resposta': "Leonardo da Vinci"},
+        {'pergunta': "Quantos continentes existem?", 'resposta': "Sete"},
+        {'pergunta': "Qual é a montanha mais alta do mundo?", 'resposta': "Monte Everest"},
+        {'pergunta': "Quem foi o primeiro homem a pisar na Lua?", 'resposta': "Neil Armstrong"},
+        {'pergunta': "Qual é o símbolo químico para o ouro?", 'resposta': "Au"},
+        {'pergunta': "Quem escreveu 'Romeu e Julieta'?", 'resposta': "William Shakespeare"},
+        {'pergunta': "Qual é o maior oceano do mundo?", 'resposta': "Oceano Pacífico"},
+        {'pergunta': "Quem foi o primeiro presidente dos Estados Unidos?", 'resposta': "George Washington"},
+        {'pergunta': "Quem foi o cientista que formulou a teoria da relatividade?", 'resposta': "Albert Einstein"},
+        {'pergunta': "Qual é o segundo elemento mais abundante na crosta terrestre?", 'resposta': "Silício"},
+        {'pergunta': "Quem escreveu a obra 'O Pequeno Príncipe'?", 'resposta': "Antoine de Saint-Exupéry"},
+        {'pergunta': "Qual é o maior mamífero terrestre?", 'resposta': "Elefante africano"},
+        {'pergunta': "Quem é o autor da obra 'A Metamorfose'?", 'resposta': "Franz Kafka"},
+        {'pergunta': "Qual é a cidade mais populosa do mundo?", 'resposta': "Tóquio"},
+        {'pergunta': "Quem pintou 'A Persistência da Memória'?", 'resposta': "Salvador Dalí"},
+        {'pergunta': "Qual é o país com a maior área territorial do mundo?", 'resposta': "Rússia"},
+        {'pergunta': "Quem foi o primeiro homem a escalar o Monte Everest?", 'resposta': "Sir Edmund Hillary"}
+]
+
     random.shuffle(perguntas_respostas)
-    soma_valor = 100
+
+    soma_valor = 0
+    total_soma = 0
+    rodada = 1
+
+    print("\033[1m\033[92m=== Bem-vindo ao Python Millionaire ===\033[0m")
+
+
     for pergunta in perguntas_respostas:
+        print(f'Comecamos a rodada {rodada}...\n')
         print((pergunta['pergunta']))
         resposta = input("RESPOSTA: ")
+        
         if resposta == pergunta['resposta']:
-            print("Acertou!")
+            print("\nAcertou!")
+            if rodada == 1:
+                soma_valor = 100
             soma_valor *= 2
+            total_soma += soma_valor
             opcao_milionario = int(input(''' 
             Digite [1] para CONTINUAR
             Digite [2] para DESISTIR      
-                                   
+                                    
             '''))
+            
             if opcao_milionario == 1:
+                rodada+=1
                 continue
             else:
-                print("Voce parou!")
-                
+                print("\nVoce parou!")
                 break
-            continue
         else:
-            print("Errou!")
+            print("\nErrou!!!")
             soma_valor = 0
             break
+        
+        
     print(f'O valor final foi de R${soma_valor},00!')
 
 #INICIALIZADORES
@@ -137,7 +167,6 @@ def clear():
     else:
         os.system('cls')
         main()
-
 
 def main():
     titulo_projeto()
