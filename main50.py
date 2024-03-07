@@ -16,6 +16,7 @@ def menu_principal():
         2. Rolagem de Dados
         3. Pedra, Papel, Tesoura
         4. Pedra, Papel, Tesoura, Lagarto e Spock?!
+        5. Quem quer ser um MILIONARIO?
     ''')
 
     opcao_menu_principal = int(input('Digite qual projeto deseja extrair: '))
@@ -28,6 +29,8 @@ def menu_principal():
         pjt_pedra_papel_tesoura()
     elif opcao_menu_principal == 4:
         pjt_pptls()
+    elif opcao_menu_principal == 5:
+        pjt_milionário()
 
 
 
@@ -88,6 +91,40 @@ def pjt_pptls():
     else:
         print('PERDEU!')
     clear()
+    
+def pjt_milionário():
+    perguntas_respostas = [
+    {'pergunta': "Qual é a capital do Brasil?", 'resposta': "Brasília"},
+    {'pergunta': "Quem escreveu 'Dom Quixote'?", 'resposta': "Miguel de Cervantes"},
+    {'pergunta': "Qual é o maior planeta do sistema solar?", 'resposta': "Júpiter"},
+    {'pergunta': "Quem pintou a 'Mona Lisa'?", 'resposta': "Leonardo da Vinci"},
+    {'pergunta': "Quantos continentes existem?", 'resposta': "Sete"}
+    ]
+    random.shuffle(perguntas_respostas)
+    soma_valor = 100
+    for pergunta in perguntas_respostas:
+        print((pergunta['pergunta']))
+        resposta = input("RESPOSTA: ")
+        if resposta == pergunta['resposta']:
+            print("Acertou!")
+            soma_valor *= 2
+            opcao_milionario = int(input(''' 
+            Digite [1] para CONTINUAR
+            Digite [2] para DESISTIR      
+                                   
+            '''))
+            if opcao_milionario == 1:
+                continue
+            else:
+                print("Voce parou!")
+                
+                break
+            continue
+        else:
+            print("Errou!")
+            soma_valor = 0
+            break
+    print(f'O valor final foi de R${soma_valor},00!')
 
 #INICIALIZADORES
 def clear():
@@ -97,8 +134,9 @@ def clear():
         ''')
     if x == "1":
         exit()
-    os.system('cls')
-    main()
+    else:
+        os.system('cls')
+        main()
 
 
 def main():
