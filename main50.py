@@ -18,6 +18,7 @@ def menu_principal():
         4. Pedra, Papel, Tesoura, Lagarto e Spock?!
         5. Quem quer ser um MILIONARIO?
         6. Quiz
+        7. Aventura
     ''')
 
     opcao_menu_principal = int(input('Digite qual projeto deseja extrair: '))
@@ -34,6 +35,8 @@ def menu_principal():
         pjt_milionário()
     elif opcao_menu_principal == 6:
         pjt_quiz()
+    elif opcao_menu_principal == 7:
+        pjt_aventura()
 
 
 
@@ -190,6 +193,38 @@ def pjt_quiz():
 
     print(f'\nPontuacao final de {pontuacao}')
             
+def pjt_aventura():
+    print('SEJA BEM VINDO A CAVERNA DO DRAGÃO!\n')
+    print('''
+    Como jogar?
+    Primeiro você lê a situação em que está envolvido, 
+    depois seleciona uma de duas opções para seguir.
+                
+    Lembre-se que qualquer decisão errada pode fazer você perder o jogo!
+            
+    Boa sorte, aventureiro!\n
+    ''')
+    print('*' * 60)
+    print('''\n
+    Você se encontra na frente da entrada da caverna do dragão...
+    [1] Você entra na caverna
+    [2] Você decide dar meia volta e sair dali
+    ''')
+
+    opcao_caverna = int(input("\nOPÇÃO: "))
+    print('Voce segue para dentro da caverna...') if opcao_caverna == 1 else exit('Game Over')
+
+    print('''\n
+    Você encontra duas portas com símbolos, a da esquerda tem um dragão, a da direita tem um tesouro
+    [1] Você entra na porta do dragão
+    [2] Você entra na porta do tesouro
+    ''')
+
+    opcao_porta = int(input("\nOPÇÃO: "))
+    if opcao_porta == 1:
+
+    
+    
     
 #INICIALIZADORES
 def clear():
