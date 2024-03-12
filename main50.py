@@ -17,6 +17,7 @@ def menu_principal():
         3. Pedra, Papel, Tesoura
         4. Pedra, Papel, Tesoura, Lagarto e Spock?!
         5. Quem quer ser um MILIONARIO?
+        6. Quiz
     ''')
 
     opcao_menu_principal = int(input('Digite qual projeto deseja extrair: '))
@@ -31,6 +32,8 @@ def menu_principal():
         pjt_pptls()
     elif opcao_menu_principal == 5:
         pjt_milionário()
+    elif opcao_menu_principal == 6:
+        pjt_quiz()
 
 
 
@@ -156,6 +159,38 @@ def pjt_milionário():
         
     print(f'O valor final foi de R${soma_valor},00!')
 
+def pjt_quiz():
+    perguntas_resp = [
+    {'pergunta': 'Qual a terceira pessoa do plural?', 'opcao_errada1': 'Ele', 'opcao_errada2': 'Nós', 'opcao_errada3': 'Vós', 'opcao_correta': 'Eles'},
+    {'pergunta': 'Qual é o planeta mais próximo do Sol?', 'opcao_errada1': 'Vênus', 'opcao_errada2': 'Marte', 'opcao_errada3': 'Júpiter', 'opcao_correta': 'Mercúrio'},
+    {'pergunta': 'Qual é a capital da França?', 'opcao_errada1': 'Madrid', 'opcao_errada2': 'Berlim', 'opcao_errada3': 'Londres', 'opcao_correta': 'Paris'}]
+    
+    rodada = 1
+    pontuacao = 0
+    letras = ['A', 'B', 'C', 'D']
+
+    for pergunta in perguntas_resp:
+        print(f'\nRodada: {rodada} de 3\n')
+        print(f'{rodada}. {pergunta["pergunta"]}')
+        rodada += 1
+        print('\nOPCOES\n')
+        opcoes = [(pergunta['opcao_errada1']), (pergunta['opcao_errada2']), (pergunta['opcao_errada3']), (pergunta['opcao_correta'])]
+        random.shuffle(opcoes)
+        for letra, opcao in zip(letras, opcoes):
+            print(f'[{letra}] - {opcao}')
+        
+        resposta_correta = letras[opcoes.index(pergunta['opcao_correta'])]
+        resposta = input("Digite a letra da resposta: ").upper()
+        if resposta == resposta_correta:
+            print('\nAcertou!')
+            pontuacao += 1
+        else:
+            print('\nErrou!')
+            print(f'A resposta era {pergunta["opcao_correta"]}')
+
+    print(f'\nPontuacao final de {pontuacao}')
+            
+    
 #INICIALIZADORES
 def clear():
     x = input('''
